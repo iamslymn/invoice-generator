@@ -310,7 +310,13 @@ button:disabled {
     line-height: 1.5;
 }
 
-.invoice-table .service-note {    display: block;    font-size: 18px;    color: #444;    margin-top: 6px;    font-weight: normal;}
+.invoice-table .service-note {
+    display: block;
+    font-size: 18px;
+    color: #444;
+    margin-top: 6px;
+    font-weight: normal;
+}
 
 .invoice-table .price {
     text-align: right;
@@ -395,4 +401,176 @@ button:disabled {
     height: 0;
     margin: 0;
     padding: 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    /* Form layout adjustments */
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Service row adjustments */
+    .service-row {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    
+    .service-row input,
+    .service-row textarea {
+        width: 100%;
+    }
+    
+    .service-description,
+    .service-details,
+    .service-price,
+    .service-notes {
+        flex: none;
+        width: 100%;
+    }
+    
+    .remove-service {
+        align-self: flex-end;
+    }
+    
+    /* Invoice preview adjustments */
+    #previewContent {
+        padding: 15px;
+        overflow-x: auto;
+    }
+    
+    /* Invoice content adjustments */
+    .invoice-header {
+        flex-direction: column;
+    }
+    
+    .invoice-logo {
+        margin-bottom: 15px;
+        align-self: center;
+    }
+    
+    .invoice-details {
+        flex-direction: column;
+    }
+    
+    .invoice-info {
+        text-align: left;
+        margin-top: 20px;
+    }
+    
+    .invoice-table th,
+    .invoice-table td {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    .invoice-table .service-name,
+    .invoice-table .service-description {
+        font-size: 16px;
+    }
+    
+    .invoice-totals {
+        width: 100%;
+    }
+    
+    .invoice-payment p,
+    .invoice-terms p {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+    
+    label {
+        font-size: 14px;
+    }
+    
+    input, select, textarea, button {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .logo-preview {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .invoice-title {
+        font-size: 22px;
+    }
+    
+    .invoice-company h2 {
+        font-size: 20px;
+    }
+    
+    .invoice-company p,
+    .invoice-client p,
+    .invoice-info p {
+        font-size: 14px;
+    }
+    
+    .invoice-table th {
+        font-size: 14px;
+    }
+    
+    .invoice-table td {
+        font-size: 14px;
+    }
+    
+    .invoice-totals td {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .invoice-totals .grand-total {
+        font-size: 16px;
+    }
+    
+    .invoice-payment h3,
+    .invoice-terms h3 {
+        font-size: 18px;
+    }
+    
+    .invoice-payment p,
+    .invoice-terms p {
+        font-size: 14px;
+    }
 } 
