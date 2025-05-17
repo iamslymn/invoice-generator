@@ -56,4 +56,4 @@ MIT License
 
 ## Privacy
 
-This application runs entirely in the browser - no data is sent to any server. 
+This application runs entirely in the browser - no data is sent to any server.
