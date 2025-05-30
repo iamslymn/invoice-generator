@@ -3,151 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invoice Generator</title>
+    <title>Invoice Creator</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        .landing-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+            padding: 48px 32px 40px 32px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .landing-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            color: #22223b;
+        }
+        .landing-desc {
+            color: #4a4e69;
+            font-size: 1.1rem;
+            margin-bottom: 2em;
+        }
+        .create-invoice-btn {
+            background: linear-gradient(90deg, #4f8cff 0%, #38b6ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 1em 2.5em;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+        }
+        .create-invoice-btn:hover {
+            box-shadow: 0 4px 16px rgba(56,182,255,0.13);
+            transform: translateY(-2px) scale(1.03);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Invoice Generator</h1>
-        <form id="invoiceForm">
-            <div class="section">
-                <h2>Company Details</h2>
-                <div class="form-group">
-                    <label for="companyLogo">Logo:</label>
-                    <input type="file" id="companyLogo" accept="image/*">
-                    <div id="logoPreview" class="logo-preview"></div>
-                </div>
-                <div class="form-group">
-                    <label for="companyName">Company Name:</label>
-                    <input type="text" id="companyName" required>
-                </div>
-                <div class="form-group">
-                    <label for="companyAddress">Address:</label>
-                    <textarea id="companyAddress" required></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="companyPhone">Phone Number:</label>
-                        <input type="text" id="companyPhone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="companyEmail">Email:</label>
-                        <input type="email" id="companyEmail" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="companyHST">HST Number:</label>
-                    <input type="text" id="companyHST">
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Client Details</h2>
-                <div class="form-group">
-                    <label for="clientName">Client Name:</label>
-                    <input type="text" id="clientName" required>
-                </div>
-                <div class="form-group">
-                    <label for="clientAddress">Address:</label>
-                    <textarea id="clientAddress" required></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="clientEmail">Email:</label>
-                        <input type="email" id="clientEmail">
-                    </div>
-                    <div class="form-group">
-                        <label for="clientPhone">Phone Number:</label>
-                        <input type="text" id="clientPhone">
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Invoice Details</h2>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="invoiceNumber">Invoice Number:</label>
-                        <input type="text" id="invoiceNumber" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoiceDate">Date:</label>
-                        <input type="date" id="invoiceDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="currency">Currency:</label>
-                        <select id="currency">
-                            <option value="$">USD ($)</option>
-                            <option value="€">EUR (€)</option>
-                            <option value="£">GBP (£)</option>
-                            <option value="¥">JPY (¥)</option>
-                            <option value="₹">INR (₹)</option>
-                            <option value="C$">CAD (C$)</option>
-                            <option value="A$">AUD (A$)</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Services:</label>
-                    <div id="servicesContainer">
-                        <div class="service-row">
-                            <input type="text" class="service-description" placeholder="Service Name" required>
-                            <textarea class="service-details" placeholder="Detailed description of service" rows="2"></textarea>
-                            <input type="number" class="service-price" placeholder="Price" step="0.01" min="0" required>
-                            <input type="text" class="service-notes" placeholder="Notes (e.g. materials & labor included)">
-                            <button type="button" class="remove-service" disabled>Remove</button>
-                        </div>
-                    </div>
-                    <button type="button" id="addService">Add Service</button>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="hstRate">HST Rate (%):</label>
-                        <input type="number" id="hstRate" value="13" step="0.01" min="0" max="100">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2>Payment & Terms</h2>
-                <div class="form-group">
-                    <label for="paymentMethod">Preferred Payment Method:</label>
-                    <select id="paymentMethod">
-                        <option value="E-transfer">E-transfer</option>
-                        <option value="Credit Card">Credit Card</option>
-                        <option value="Bank Transfer">Bank Transfer</option>
-                        <option value="Check">Check</option>
-                        <option value="Cash">Cash</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="etransferAccount">E-transfer Account:</label>
-                    <input type="text" id="etransferAccount">
-                </div>
-                
-                <div class="form-group">
-                    <label for="termsConditions">Terms and Conditions:</label>
-                    <textarea id="termsConditions" rows="4" placeholder="Enter your payment terms, return policy, etc.">Payment due within 30 days of invoice date. Late payments subject to a 2% monthly fee.</textarea>
-                </div>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" id="generateInvoice">Generate Invoice</button>
-            </div>
-        </form>
-        
-        <div id="invoicePreview" class="hidden">
-            <h2>Invoice Preview</h2>
-            <div id="previewContent"></div>
-            <button id="downloadPdf">Download PDF</button>
-        </div>
+    <div class="landing-container">
+        <div class="landing-title">Invoice Creator</div>
+        <div class="landing-desc">Create professional invoices in seconds. Simple, fast, and free.</div>
+        <button class="create-invoice-btn" onclick="window.location.href='invoice.html'">Create Invoice</button>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="script.js"></script>
 </body>
 </html> 
